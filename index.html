@@ -1,55 +1,474 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andreas Falley - Coming Soon</title>
+    <title>Andreas Falley - Python & AI Agentic Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-        
+        :root {
+            --bg-base: #0f172a;
+            --text-base: #94a3b8;
+            --text-heading: #e2e8f0;
+            --text-accent: #5eead4;
+            --highlight-bg: rgba(255, 255, 255, 0.05);
+            --pill-bg: rgba(45, 212, 191, 0.1);
+        }
+
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #f8fafc;
             font-family: 'Inter', sans-serif;
-            text-align: center;
+            background-color: var(--bg-base);
+            color: var(--text-base);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Mouse tracking spotlight */
+        .spotlight {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: 30;
+            transition: background 0.3s ease;
+            background: radial-gradient(600px circle at 50% 50%, rgba(29, 78, 216, 0.15), transparent 80%);
+        }
+
+        a {
+            color: var(--text-heading);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--text-accent);
         }
 
         .container {
-            padding: 2rem;
-            border-radius: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 40;
         }
 
-        h1 {
-            font-weight: 600;
+        @media (min-width: 1024px) {
+            .container {
+                display: flex;
+                justify-content: space-between;
+                gap: 4rem;
+                padding: 6rem;
+            }
+        }
+
+        /* Fixed Sidebar */
+        .sidebar {
+            @media (min-width: 1024px) {
+                position: sticky;
+                top: 0;
+                display: flex;
+                max-height: 100vh;
+                width: 45%;
+                flex-direction: column;
+                justify-content: space-between;
+                padding-top: 0;
+                padding-bottom: 6rem;
+            }
+        }
+
+        .header h1 {
             font-size: 3rem;
-            margin: 0 0 1rem 0;
-            background: linear-gradient(to right, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.025em;
         }
 
-        p {
-            font-weight: 300;
+        .header h2 {
             font-size: 1.25rem;
-            color: #cbd5e1;
+            font-weight: 500;
+            color: var(--text-heading);
+            margin: 0 0 1rem 0;
+        }
+
+        .header p {
+            max-width: 24rem;
             margin: 0;
+        }
+
+        /* Nav */
+        nav {
+            margin-top: 4rem;
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            nav { display: block; }
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li { margin-bottom: 1rem; }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-base);
+            width: max-content;
+        }
+
+        .nav-indicator {
+            display: inline-block;
+            width: 2rem;
+            height: 1px;
+            background-color: var(--text-base);
+            margin-right: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-heading);
+        }
+
+        nav a:hover .nav-indicator, nav a.active .nav-indicator {
+            width: 4rem;
+            background-color: var(--text-heading);
+        }
+
+        /* Content Area */
+        .content {
+            padding-top: 4rem;
+            @media (min-width: 1024px) {
+                width: 55%;
+                padding-top: 0;
+            }
+        }
+
+        section {
+            margin-bottom: 8rem;
+        }
+
+        section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-heading);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(8px);
+            padding: 1rem 0;
+        }
+
+        @media (min-width: 1024px) {
+            section h3 {
+                display: none;
+            }
+        }
+
+        .about p {
+            margin-bottom: 1rem;
+        }
+
+        /* Experience Cards */
+        .experience-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            margin-bottom: 2rem;
+            border: 1px solid transparent;
+        }
+
+        @media (min-width: 640px) {
+            .experience-card {
+                grid-template-columns: 1fr 3fr;
+            }
+        }
+
+        .experience-card:hover {
+            background-color: var(--highlight-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .experience-card .date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        .experience-card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-heading);
+            margin: 0 0 0.5rem 0;
+            transition: color 0.2s ease;
+        }
+
+        .experience-card:hover h4 {
+            color: var(--text-accent);
+        }
+
+        .experience-card p {
+            font-size: 0.875rem;
+            margin: 0 0 1rem 0;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tag-list li {
+            background-color: var(--pill-bg);
+            color: var(--text-accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Social Links */
+        .socials {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .socials a svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            fill: currentColor;
         }
     </style>
 </head>
 <body>
+    <div class="spotlight"></div>
     <div class="container">
-        <h1>Andreas Falley</h1>
-        <p>Personal website coming soon.</p>
+        
+        <!-- Left Sidebar / Header -->
+        <header class="sidebar">
+            <div>
+                <div class="header">
+                    <h1>Andreas Falley</h1>
+                    <h2>Python & AI Agentic Engineer</h2>
+                    <p>Building cloud-native Django apps, AI-driven interfaces, and edge automation solutions for robust, cross-functional projects.</p>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#about" class="nav-link">
+                                <span class="nav-indicator"></span> 
+                                <span class="nav-text">About</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#experience" class="nav-link">
+                                <span class="nav-indicator"></span> 
+                                <span class="nav-text">Experience</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#education" class="nav-link">
+                                <span class="nav-indicator"></span> 
+                                <span class="nav-text">Education</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <ul class="socials">
+                <li>
+                    <a href="https://linkedin.com/in/afalley" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:andreas.falley@gmail.com" target="_blank" rel="noreferrer" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                </li>
+            </ul>
+        </header>
+
+        <!-- Right Content Section -->
+        <main class="content">
+            
+            <section id="about" class="about">
+                <h3>About</h3>
+                <p>I am a multidisciplinary Python engineer with a passion for integrating AI and automation into everyday workflows. I specialize in leading cross-functional projects—from building scalable backends using <strong>Django and REST APIs</strong> to architecting <strong>Generative AI agents</strong> and designing embedded smarts for <strong>Raspberry Pi and Google Coral TPUs</strong>.</p>
+                <p>Throughout my career, I've comfortably navigated both fast-paced enterprise environments (like Wells Fargo and Cisco) and dynamic hardware makerspaces. My core focus is blending robust application layers with AI tooling frameworks like <strong>LangGraph, MCP, and HuggingFace</strong> to build practical, intelligent tools. If it involves code optimization, bridging software with hardware, or parsing complex data pipelines, I'm right in my element.</p>
+            </section>
+
+            <section id="experience">
+                <h3>Experience</h3>
+                
+                <!-- Role 1 -->
+                <div class="experience-card">
+                    <div class="date">Sep 2024 — Present</div>
+                    <div>
+                        <h4>Software & Firmware Engineer · General Lithium HQ</h4>
+                        <p>Supported operations at GL makerspace, building an in-house AI application for laser cutter vector graphics processing and managing battery management systems.</p>
+                        <ul class="tag-list">
+                            <li>Python</li>
+                            <li>Django</li>
+                            <li>Generative AI</li>
+                            <li>Raspberry Pi</li>
+                            <li>Klipper</li>
+                            <li>Google Coral TPU</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 2 -->
+                <div class="experience-card">
+                    <div class="date">Jul 2022 — Dec 2022</div>
+                    <div>
+                        <h4>Python Engineer · Molina Health Care</h4>
+                        <p>Developed automated report generation pipelines and refactored legacy systems, significantly improving the performance of critical healthcare workflows.</p>
+                        <ul class="tag-list">
+                            <li>Python</li>
+                            <li>MS-TSQL</li>
+                            <li>Dell Boomi</li>
+                            <li>Data Pipelines</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 3 -->
+                <div class="experience-card">
+                    <div class="date">Jul 2020 — Oct 2020</div>
+                    <div>
+                        <h4>Python Developer · Cisco / Altran</h4>
+                        <p>Leveraged PLY (Lex/YACC) to implement a parser/interpreter for YANG model test management, accelerating topology rules validation by 30%.</p>
+                        <ul class="tag-list">
+                            <li>Python</li>
+                            <li>PLY (Lex/YACC)</li>
+                            <li>Testing Automation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 4 -->
+                <div class="experience-card">
+                    <div class="date">Apr 2019 — Sep 2019</div>
+                    <div>
+                        <h4>Senior Python Developer · Wells Fargo</h4>
+                        <p>Architected a multithreaded document security engine automating SFTP pipelines to safeguard sensitive data transfers across banking networks.</p>
+                        <ul class="tag-list">
+                            <li>Python</li>
+                            <li>Multithreading</li>
+                            <li>Security Engineering</li>
+                            <li>SFTP</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 5 -->
+                <div class="experience-card">
+                    <div class="date">Dec 2016 — Mar 2019</div>
+                    <div>
+                        <h4>Lead Python Developer · Walton and Twu</h4>
+                        <p>Led development of an email-header parsing and spam analysis platform, designing scalable Django CRUD interfaces and tracking proxy server paths visually over MySQL.</p>
+                        <ul class="tag-list">
+                            <li>Python</li>
+                            <li>Django</li>
+                            <li>MySQL</li>
+                            <li>REST APIs</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="education">
+                <h3>Education & Leadership</h3>
+                
+                <div class="experience-card">
+                    <div class="date">Rutgers University</div>
+                    <div>
+                        <h4>Bachelor of Science, Computer Science</h4>
+                        <p>Additional coursework in Bioinformatics, Chemistry, and Biology at San Francisco State University.</p>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="date">Community</div>
+                    <div>
+                        <h4>Co-Founder & Treasurer · BAHHF</h4>
+                        <p>Organized large-scale music events recognized by the Mayor of Oakland’s Proclamation. Frequent guest speaker for AI & Makerspace Meetups.</p>
+                        <ul class="tag-list">
+                            <li>Event Planning</li>
+                            <li>Public Speaking</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
     </div>
+
+    <script>
+        // Spotlight effect
+        const spotlight = document.querySelector('.spotlight');
+        document.addEventListener('mousemove', e => {
+            const x = e.clientX;
+            const y = e.clientY;
+            spotlight.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(29, 78, 216, 0.15), transparent 80%)`;
+        });
+
+        // Intersection Observer for scroll spy on Navigation
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(sec => observer.observe(sec));
+    </script>
 </body>
 </html>
