@@ -9,12 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-base: #0f172a;
-            --text-base: #94a3b8;
-            --text-heading: #e2e8f0;
-            --text-accent: #5eead4;
+            --bg-base: #1e1033;
+            --text-base: #a69ebd;
+            --text-heading: #ede9f6;
+            --text-accent: #d8b4fe;
             --highlight-bg: rgba(255, 255, 255, 0.05);
-            --pill-bg: rgba(45, 212, 191, 0.1);
+            --pill-bg: rgba(216, 180, 254, 0.15);
         }
 
         body {
@@ -34,7 +34,7 @@
             inset: 0;
             z-index: 30;
             transition: background 0.3s ease;
-            background: radial-gradient(600px circle at 50% 50%, rgba(29, 78, 216, 0.15), transparent 80%);
+            background: radial-gradient(600px circle at 50% 50%, rgba(147, 51, 234, 0.15), transparent 80%);
         }
 
         a {
@@ -169,7 +169,7 @@
             position: sticky;
             top: 0;
             z-index: 20;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(30, 16, 51, 0.9);
             backdrop-filter: blur(8px);
             padding: 1rem 0;
         }
@@ -492,7 +492,7 @@ prototyping and community workshops. Created a custom LED lighting system for th
         document.addEventListener('mousemove', e => {
             const x = e.clientX;
             const y = e.clientY;
-            spotlight.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(29, 78, 216, 0.15), transparent 80%)`;
+            spotlight.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(147, 51, 234, 0.15), transparent 80%)`;
         });
 
         // Intersection Observer for scroll spy on Navigation
